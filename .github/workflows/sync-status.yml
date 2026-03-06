@@ -1,0 +1,73 @@
+name: Sync Story Status
+
+on:
+  pull_request:
+    types: [closed, reopened]
+    branches:
+      - main
+
+jobs:
+  sync-status:
+    runs-on: ubuntu-latest
+    name: Update Story Status
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: scripts/task-manager/package-lock.json
+
+      - name: Install dependencies
+        working-directory: scripts/task-manager
+        run: npm ci
+
+      - name: Extract story ID from PR
+        id: extract-id
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          STORY_ID=$(echo "$PR_TITLE" | grep -oP '\[(US|BUG|TASK)-\d+\]' | tr -d '[]' || echo "")
+          echo "story_id=$STORY_ID" >> $GITHUB_OUTPUT
+          echo "Found story ID: $STORY_ID"
+
+      - name: Update story status (merged)
+        if: github.event.action == 'closed' && github.event.pull_request.merged == true && steps.extract-id.outputs.story_id != ''
+        working-directory: scripts/task-manager
+        run: |
+          npm run update ${{ steps.extract-id.outputs.story_id }} -- --status completed
+
+      - name: Update story status (closed without merge)
+        if: github.event.action == 'closed' && github.event.pull_request.merged == false && steps.extract-id.outputs.story_id != ''
+        working-directory: scripts/task-manager
+        run: |
+          npm run update ${{ steps.extract-id.outputs.story_id }} -- --status cancelled
+
+      - name: Update story status (reopened)
+        if: github.event.action == 'reopened' && steps.extract-id.outputs.story_id != ''
+        working-directory: scripts/task-manager
+        run: |
+          npm run update ${{ steps.extract-id.outputs.story_id }} -- --status in-progress
+
+      - name: Commit changes
+        if: steps.extract-id.outputs.story_id != ''
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add tasks/
+          git diff --staged --quiet || git commit -m "Update story status: ${{ steps.extract-id.outputs.story_id }}"
+          git push
+
+      - name: Create summary
+        if: steps.extract-id.outputs.story_id != ''
+        run: |
+          echo "### Story Status Updated ✅" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Story ID:** ${{ steps.extract-id.outputs.story_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Action:** ${{ github.event.action }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Merged:** ${{ github.event.pull_request.merged }}" >> $GITHUB_STEP_SUMMARY

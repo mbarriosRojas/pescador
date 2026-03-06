@@ -1,0 +1,32 @@
+# Task Template
+# Copy this file to tasks/stories/ and rename with format: TASK-XXX-short-title.yaml
+
+id: TASK-XXX
+type: task
+title: ""
+description: |
+  [Detailed description of the task]
+
+priority: medium  # Options: low | medium | high | critical
+status: pending   # Options: pending | in-progress | in-review | completed | cancelled
+assignee: null    # GitHub username or null
+epic: null        # Epic ID (e.g., EPIC-001) or null
+
+labels: []        # Example: [devops, infrastructure, documentation]
+
+# Checklist
+checklist:
+  - item: ""
+    completed: false
+  - item: ""
+    completed: false
+
+estimate: ""      # Example: 3h, 2d, 1w
+
+dependencies: []  # List of task IDs that must be completed first
+
+notes: ""
+
+# Metadata
+created_at: ""
+updated_at: ""

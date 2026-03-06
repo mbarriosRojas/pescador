@@ -1,0 +1,44 @@
+# Epic Template
+# Copy this file to tasks/epics/ and rename with format: EPIC-XXX-short-title.yaml
+
+id: EPIC-XXX
+title: ""
+description: |
+  [High-level description of the epic and its business value]
+
+status: pending   # Options: pending | in-progress | completed | cancelled
+
+# Business context
+goal: ""          # What business goal does this epic achieve?
+value: ""         # What value does it provide to users/business?
+
+# Timeline
+start_date: ""    # YYYY-MM-DD
+target_date: ""   # YYYY-MM-DD
+completed_date: null
+
+# Ownership
+owner: ""         # Team or individual responsible
+stakeholders: []  # List of stakeholders
+
+# Related user stories
+stories:
+  - US-XXX
+  - US-XXX
+
+# Success metrics
+metrics:
+  - metric: ""
+    target: ""
+    current: ""
+
+# Progress tracking
+total_stories: 0
+completed_stories: 0
+in_progress_stories: 0
+
+notes: ""
+
+# Metadata
+created_at: ""
+updated_at: ""

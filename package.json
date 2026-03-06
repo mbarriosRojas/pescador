@@ -1,12 +1,18 @@
 {
-  "name": "medico-online",
+  "name": "pescador",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "task": "cd scripts/task-manager && npm run task --",
+    "task:validate": "cd scripts/task-manager && npm run validate",
+    "task:create": "cd scripts/task-manager && npm run create",
+    "task:list": "cd scripts/task-manager && npm run list",
+    "task:update": "cd scripts/task-manager && npm run update",
+    "task:pr": "cd scripts/task-manager && npm run pr"
   },
   "dependencies": {
     "astro": "^5.17.1"

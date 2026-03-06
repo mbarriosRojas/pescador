@@ -1,0 +1,54 @@
+# Epic: Telemedicine Core Features
+
+id: EPIC-001
+title: "Telemedicine Core Platform Features"
+description: |
+  Build the core telemedicine features that enable remote medical consultations,
+  including video calls, appointment scheduling, and digital prescriptions.
+  This epic represents the MVP functionality for the Médico Online platform.
+
+status: in-progress
+
+goal: "Enable patients to receive complete medical care remotely through the platform"
+value: "Reduces patient travel time, increases doctor availability, and expands medical access to rural areas"
+
+start_date: "2026-03-01"
+target_date: "2026-05-31"
+completed_date: null
+
+owner: "team-platform"
+stakeholders:
+  - "Medical Director"
+  - "Product Manager"
+  - "Engineering Lead"
+  - "Compliance Officer"
+
+stories:
+  - US-001
+  - US-002
+  - US-003
+
+metrics:
+  - metric: "Video consultation success rate"
+    target: "95%"
+    current: "0%"
+  - metric: "Average time to connect call"
+    target: "< 30 seconds"
+    current: "N/A"
+  - metric: "Patient satisfaction score"
+    target: "> 4.5/5"
+    current: "N/A"
+
+total_stories: 3
+completed_stories: 0
+in_progress_stories: 1
+
+notes: |
+  This epic is critical for launch. We need to ensure:
+  - HIPAA compliance for all data handling
+  - High reliability (99.9% uptime target)
+  - Mobile-friendly design
+  - Accessibility standards (WCAG 2.1 AA)
+
+created_at: "2026-03-01T09:00:00Z"
+updated_at: "2026-03-06T10:00:00Z"

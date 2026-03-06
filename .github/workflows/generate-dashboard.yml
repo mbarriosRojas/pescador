@@ -1,0 +1,45 @@
+name: Generate Task Dashboard
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'tasks/stories/**'
+      - 'tasks/epics/**'
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    name: Generate Static Dashboard
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate dashboard HTML
+        run: |
+          mkdir -p docs/tasks
+          node scripts/utils/generate-dashboard.js
+
+      - name: Commit dashboard changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/tasks/
+          git diff --staged --quiet || git commit -m "Update task dashboard"
+          git push
+
+      - name: Create summary
+        run: |
+          echo "### Task Dashboard Updated ✅" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Dashboard available at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/tasks/" >> $GITHUB_STEP_SUMMARY

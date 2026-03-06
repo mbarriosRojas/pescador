@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/mbarriosRojas/pescador/schemas/user-story.schema.json",
+  "title": "User Story",
+  "description": "Schema for user story YAML files",
+  "type": "object",
+  "required": ["id", "type", "title", "description", "priority", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^US-[0-9]{3,}$",
+      "description": "Unique identifier in format US-XXX"
+    },
+    "type": {
+      "type": "string",
+      "const": "user-story"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200,
+      "description": "Short, descriptive title"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Detailed description following user story format"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "in-progress", "in-review", "completed", "cancelled"]
+    },
+    "assignee": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "epic": {
+      "oneOf": [
+        { "type": "string", "pattern": "^EPIC-[0-9]{3,}$" },
+        { "type": "null" }
+      ]
+    },
+    "labels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 5 },
+      "minItems": 1
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^US-[0-9]{3,}-T[0-9]+$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 5
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "in-progress", "completed", "cancelled"]
+          },
+          "estimate": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+# Bug Template
+# Copy this file to tasks/stories/ and rename with format: BUG-XXX-short-title.yaml
+
+id: BUG-XXX
+type: bug
+title: ""
+description: |
+  **Description:**
+  [Clear description of the bug]
+  
+  **Steps to Reproduce:**
+  1. 
+  2. 
+  3. 
+  
+  **Expected Behavior:**
+  [What should happen]
+  
+  **Actual Behavior:**
+  [What actually happens]
+  
+  **Environment:**
+  - Browser/Device:
+  - OS:
+  - Version:
+
+severity: medium  # Options: low | medium | high | critical
+priority: medium  # Options: low | medium | high | critical
+status: pending   # Options: pending | in-progress | in-review | completed | cancelled
+assignee: null    # GitHub username or null
+
+labels: []        # Example: [bug, frontend, ui]
+
+# Related issues or PRs
+related:
+  user_story: null  # US-XXX if this bug is related to a story
+  duplicate_of: null  # BUG-XXX if this is a duplicate
+  blocks: []         # List of issues this bug blocks
+
+tasks:
+  - id: BUG-XXX-T1
+    title: "Investigate root cause"
+    status: pending
+    estimate: "2h"
+  - id: BUG-XXX-T2
+    title: "Implement fix"
+    status: pending
+    estimate: ""
+  - id: BUG-XXX-T3
+    title: "Add regression test"
+    status: pending
+    estimate: "1h"
+
+notes: ""
+
+# Metadata
+created_at: ""
+updated_at: ""
+resolved_at: ""

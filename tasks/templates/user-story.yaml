@@ -1,0 +1,37 @@
+# User Story Template
+# Copy this file to tasks/stories/ and rename with format: US-XXX-short-title.yaml
+
+id: US-XXX
+type: user-story
+title: ""
+description: |
+  As a [role]
+  I want [feature]
+  So that [benefit]
+
+priority: medium  # Options: low | medium | high | critical
+status: pending   # Options: pending | in-progress | in-review | completed | cancelled
+assignee: null    # GitHub username or null
+epic: null        # Epic ID (e.g., EPIC-001) or null
+
+labels: []        # Example: [frontend, authentication, api]
+
+acceptance_criteria:
+  - ""            # Add specific, testable criteria
+  - ""
+
+tasks:
+  - id: US-XXX-T1
+    title: ""
+    status: pending
+    estimate: ""  # Example: 3h, 1d
+  - id: US-XXX-T2
+    title: ""
+    status: pending
+    estimate: ""
+
+notes: ""         # Optional additional context
+
+# Metadata (auto-generated, update manually if needed)
+created_at: ""    # ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ
+updated_at: ""    # ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ
