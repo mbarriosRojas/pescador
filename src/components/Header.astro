@@ -1,0 +1,136 @@
+---
+---
+
+<header class="header">
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="#0066cc"/>
+          <path d="M20 10L20 30M10 20L30 20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Médico Online</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#como-funciona">Cómo Funciona</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .logo-text {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-menu a {
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+  }
+
+  .nav-menu a:hover {
+    color: var(--primary-color);
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-dark);
+    border-radius: 2px;
+    transition: var(--transition);
+  }
+
+  @media (max-width: 768px) {
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: var(--bg-white);
+      padding: 1rem;
+      gap: 1rem;
+      box-shadow: var(--shadow-md);
+      display: none;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  menuToggle?.addEventListener('click', () => {
+    if (navMenu) {
+      const isHidden = navMenu.style.display === 'none' || navMenu.style.display === '';
+      navMenu.style.display = isHidden ? 'flex' : 'none';
+    }
+  });
+
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768 && navMenu) {
+        navMenu.style.display = 'none';
+      }
+    });
+  });
+</script>

@@ -1,0 +1,116 @@
+---
+---
+
+<section id="beneficios" class="section benefits">
+  <div class="container">
+    <div class="section-header">
+      <h2>¿Por Qué Elegirnos?</h2>
+      <p>Beneficios que marcan la diferencia en tu atención médica</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-number">01</div>
+        <h3>Acceso Inmediato</h3>
+        <p>No más esperas interminables. Conecta con un médico en menos de 5 minutos, cuando y donde lo necesites.</p>
+      </div>
+
+      <div class="benefit-item">
+        <div class="benefit-number">02</div>
+        <h3>Médicos Certificados</h3>
+        <p>Todos nuestros profesionales están certificados y cuentan con años de experiencia en sus especialidades.</p>
+      </div>
+
+      <div class="benefit-item">
+        <div class="benefit-number">03</div>
+        <h3>Seguridad y Privacidad</h3>
+        <p>Tus datos médicos están protegidos con encriptación de última generación. Total confidencialidad garantizada.</p>
+      </div>
+
+      <div class="benefit-item">
+        <div class="benefit-number">04</div>
+        <h3>Ahorro de Tiempo y Dinero</h3>
+        <p>Sin desplazamientos ni salas de espera. Consultas hasta 60% más económicas que las presenciales.</p>
+      </div>
+
+      <div class="benefit-item">
+        <div class="benefit-number">05</div>
+        <h3>Historial Digital</h3>
+        <p>Toda tu información médica en un solo lugar, accesible cuando la necesites, desde cualquier dispositivo.</p>
+      </div>
+
+      <div class="benefit-item">
+        <div class="benefit-number">06</div>
+        <h3>Atención Personalizada</h3>
+        <p>Cada consulta es única. Recibe un trato humano y cercano adaptado a tus necesidades específicas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-header h2 {
+    color: var(--text-dark);
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--text-light);
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .benefit-item {
+    position: relative;
+    padding: var(--spacing-lg);
+    background-color: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+
+  .benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .benefit-number {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1;
+  }
+
+  .benefit-item h3 {
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .benefit-item p {
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

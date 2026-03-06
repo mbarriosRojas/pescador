@@ -1,0 +1,146 @@
+---
+---
+
+<section id="servicios" class="section services">
+  <div class="container">
+    <div class="section-header">
+      <h2>Nuestros Servicios</h2>
+      <p>Atención médica integral adaptada a tus necesidades</p>
+    </div>
+    
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="30" fill="#e3f2fd"/>
+            <path d="M30 15v30M15 30h30" stroke="#0066cc" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Consulta General</h3>
+        <p>Atención médica general para diagnóstico y tratamiento de enfermedades comunes. Obtén respuestas rápidas a tus dudas de salud.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="30" fill="#e8f5e9"/>
+            <rect x="20" y="15" width="20" height="30" rx="2" stroke="#00c896" stroke-width="3"/>
+            <line x1="25" y1="22" x2="35" y2="22" stroke="#00c896" stroke-width="2"/>
+            <line x1="25" y1="28" x2="35" y2="28" stroke="#00c896" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Especialidades</h3>
+        <p>Acceso a especialistas en cardiología, dermatología, pediatría, psicología y más. Atención especializada cuando la necesitas.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="30" fill="#fff3e0"/>
+            <rect x="18" y="18" width="24" height="24" rx="3" stroke="#ff9800" stroke-width="3"/>
+            <line x1="23" y1="27" x2="28" y2="32" stroke="#ff9800" stroke-width="2"/>
+            <line x1="28" y1="32" x2="37" y2="23" stroke="#ff9800" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Recetas Médicas</h3>
+        <p>Recibe recetas médicas digitales válidas directamente en tu correo. Renueva tus medicamentos sin salir de casa.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="30" fill="#f3e5f5"/>
+            <circle cx="30" cy="25" r="8" stroke="#9c27b0" stroke-width="3"/>
+            <path d="M18 42c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#9c27b0" stroke-width="3"/>
+          </svg>
+        </div>
+        <h3>Seguimiento Continuo</h3>
+        <p>Mantén un historial médico digital y seguimiento de tus tratamientos. Tu médico siempre al tanto de tu evolución.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="30" fill="#fce4ec"/>
+            <path d="M30 20v20M20 30h20" stroke="#e91e63" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="30" cy="30" r="12" stroke="#e91e63" stroke-width="3"/>
+          </svg>
+        </div>
+        <h3>Urgencias</h3>
+        <p>Atención prioritaria para casos urgentes. Respuesta inmediata cuando cada minuto cuenta.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="30" fill="#e0f2f1"/>
+            <rect x="20" y="20" width="20" height="20" rx="3" stroke="#009688" stroke-width="3"/>
+            <path d="M25 30l3 3 7-7" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Planes de Bienestar</h3>
+        <p>Programas personalizados de prevención y bienestar. Cuida tu salud antes de que surjan problemas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    background-color: var(--bg-white);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-header h2 {
+    color: var(--text-dark);
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--text-light);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .service-card {
+    background-color: var(--bg-white);
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .service-icon {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .service-card h3 {
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .service-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,147 @@
+---
+---
+
+<section id="inicio" class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Tu Salud, Nuestra Prioridad</h1>
+        <p class="hero-subtitle">
+          Consultas médicas profesionales desde la comodidad de tu hogar. 
+          Conecta con médicos certificados en minutos, 24/7.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn btn-primary">Agendar Consulta</a>
+          <a href="#como-funciona" class="btn btn-outline">Cómo Funciona</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>10,000+</strong>
+            <span>Pacientes Atendidos</span>
+          </div>
+          <div class="stat">
+            <strong>500+</strong>
+            <span>Médicos Certificados</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Disponibilidad</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#00c896;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <circle cx="250" cy="250" r="200" fill="url(#gradient1)" opacity="0.1"/>
+          <rect x="150" y="150" width="200" height="200" rx="20" fill="url(#gradient1)" opacity="0.8"/>
+          <path d="M250 180 L250 320 M180 250 L320 250" stroke="white" stroke-width="20" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
+    padding: var(--spacing-xl) 0;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-lg);
+    border-top: 2px solid var(--border-color);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat strong {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+  }
+
+  .stat span {
+    font-size: 0.875rem;
+    color: var(--text-light);
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image svg {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: var(--spacing-md) 0;
+      min-height: auto;
+    }
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .hero-image {
+      order: -1;
+    }
+
+    .hero-image svg {
+      max-width: 300px;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-sm);
+    }
+  }
+</style>
