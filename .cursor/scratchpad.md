@@ -139,6 +139,71 @@ pescador/
 
 ---
 
+## ✅ Tarea Completada: Implementar Modo Oscuro (Dark Mode)
+
+**Fecha:** 2026-03-07  
+**Rama:** cursor/estilo-modo-oscuro-1724  
+**Commit:** a5cdf49  
+**Estado:** ✅ COMPLETADO - Pendiente merge del PR
+
+### Objetivo Cumplido ✅
+Implementar un modo oscuro completo para toda la aplicación (landing page Astro y dashboard de tareas) con toggle persistente.
+
+### Estrategia Implementada
+1. ✅ **CSS Variables:** Paleta completa para modo claro y oscuro
+2. ✅ **Toggle Component:** Botón con iconos sol/luna en Header + floating button en dashboard
+3. ✅ **LocalStorage:** Persistencia automática de preferencia
+4. ✅ **System Preference:** Detección de prefers-color-scheme
+5. ✅ **Responsive:** Modo oscuro funcional en todos los dispositivos
+6. ✅ **Dashboard:** Soporte completo con sincronización
+
+### Estado de Implementación
+✅ **COMPLETADO** - 2026-03-07
+
+### Componentes Actualizados
+1. **Global CSS** (`src/styles/global.css`)
+   - Variables CSS para modo claro y oscuro
+   - Transiciones suaves entre temas
+   
+2. **Header Component** (`src/components/Header.astro`)
+   - Toggle button con iconos sol/luna
+   - JavaScript para cambio de tema
+   - LocalStorage persistence
+   
+3. **Componentes Astro** - Gradientes dinámicos:
+   - `Hero.astro`
+   - `Benefits.astro`
+   - `Pricing.astro`
+   - `Contact.astro` - Inputs con colores adaptativos
+   - `Footer.astro` - Fondo más oscuro en dark mode
+   
+4. **Task Dashboard** (`docs/tasks/index.html`)
+   - Variables CSS para dark mode
+   - Floating toggle button
+   - Sincronización con localStorage
+   - Todos los componentes adaptados (cards, inputs, badges)
+
+### Características Implementadas
+✅ Toggle de modo oscuro en header y dashboard
+✅ Persistencia en localStorage
+✅ Detección automática de preferencia del sistema
+✅ Paleta de colores optimizada para ambos modos
+✅ Transiciones suaves
+✅ Responsive en todos los dispositivos
+✅ Build exitoso
+✅ CSS scoped de Astro respetado
+
+### Git Flow Completado
+✅ Commits realizados en branch `cursor/estilo-modo-oscuro-1724`
+✅ Push exitoso a remote
+✅ PR template creado en `PULL_REQUEST.md`
+🔗 **Crear PR manualmente en:** https://github.com/mbarriosRojas/pescador/pull/new/cursor/estilo-modo-oscuro-1724
+
+**Commit hash:** a5cdf49
+**Archivos modificados:** 12 files changed, 319 insertions(+), 20 deletions(-)
+
+---
+
 ## Proyecto Anterior: Landing Page con Astro
 
 ### Descripción
