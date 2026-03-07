@@ -48,11 +48,15 @@
 
 <style>
   .hero {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
     padding: var(--spacing-xl) 0;
     min-height: calc(100vh - 80px);
     display: flex;
     align-items: center;
+  }
+
+  [data-theme="dark"] .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   }
 
   .hero-content {

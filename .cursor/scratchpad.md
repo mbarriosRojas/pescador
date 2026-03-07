@@ -139,6 +139,59 @@ pescador/
 
 ---
 
+## Nueva Tarea: Implementar Modo Oscuro (Dark Mode)
+
+**Fecha de Inicio:** 2026-03-07  
+**Rama:** cursor/estilo-modo-oscuro-1724
+
+### Objetivo
+Implementar un modo oscuro completo para toda la aplicación (landing page Astro y dashboard de tareas) con toggle persistente.
+
+### Estrategia de Implementación
+1. **CSS Variables:** Definir paleta de colores para modo claro y oscuro
+2. **Toggle Component:** Crear botón de cambio en el Header
+3. **LocalStorage:** Persistir preferencia del usuario
+4. **Responsive:** Aplicar dark mode a todos los componentes
+5. **Dashboard:** Extender soporte al dashboard de tareas
+
+### Estado de Implementación
+✅ **COMPLETADO** - 2026-03-07
+
+### Componentes Actualizados
+1. **Global CSS** (`src/styles/global.css`)
+   - Variables CSS para modo claro y oscuro
+   - Transiciones suaves entre temas
+   
+2. **Header Component** (`src/components/Header.astro`)
+   - Toggle button con iconos sol/luna
+   - JavaScript para cambio de tema
+   - LocalStorage persistence
+   
+3. **Componentes Astro** - Gradientes dinámicos:
+   - `Hero.astro`
+   - `Benefits.astro`
+   - `Pricing.astro`
+   - `Contact.astro` - Inputs con colores adaptativos
+   - `Footer.astro` - Fondo más oscuro en dark mode
+   
+4. **Task Dashboard** (`docs/tasks/index.html`)
+   - Variables CSS para dark mode
+   - Floating toggle button
+   - Sincronización con localStorage
+   - Todos los componentes adaptados (cards, inputs, badges)
+
+### Características Implementadas
+✅ Toggle de modo oscuro en header y dashboard
+✅ Persistencia en localStorage
+✅ Detección automática de preferencia del sistema
+✅ Paleta de colores optimizada para ambos modos
+✅ Transiciones suaves
+✅ Responsive en todos los dispositivos
+✅ Build exitoso
+✅ CSS scoped de Astro respetado
+
+---
+
 ## Proyecto Anterior: Landing Page con Astro
 
 ### Descripción
