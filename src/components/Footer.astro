@@ -45,7 +45,7 @@
           <li><a href="#precios">Precios</a></li>
           <li><a href="#">Términos y Condiciones</a></li>
           <li><a href="#">Política de Privacidad</a></li>
-          <li><a href="tasks/" style="color: #00c896; font-weight: 600;">📋 Task Dashboard</a></li>
+          <li><a href="tasks/" class="accent-link">📋 Task Dashboard</a></li>
         </ul>
       </div>
       
@@ -61,7 +61,7 @@
     
     <div class="footer-bottom">
       <p>&copy; 2026 Médico Online. Todos los derechos reservados.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.875rem;">Powered by <a href="https://github.com/mbarriosRojas/pescador" target="_blank" style="color: #00c896;">Pescador Task Management</a></p>
+      <p class="powered-by">Powered by <a href="https://github.com/mbarriosRojas/pescador" target="_blank" class="accent-link">Pescador Task Management</a></p>
     </div>
   </div>
 </footer>
@@ -149,6 +149,21 @@
 
   .footer-bottom a:hover {
     border-bottom-color: var(--color-accent);
+  }
+
+  .accent-link {
+    color: var(--color-accent) !important;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .accent-link:hover {
+    color: var(--color-white) !important;
+    border-bottom-color: var(--color-accent);
+  }
+
+  .powered-by {
+    margin-top: var(--space-2);
+    font-size: var(--font-size-sm);
   }
 
   @media (max-width: 768px) {
