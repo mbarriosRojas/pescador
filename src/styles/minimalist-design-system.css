@@ -1,0 +1,645 @@
+/**
+ * MINIMALIST DESIGN SYSTEM
+ * Médico Online - Telemedicina
+ * 
+ * Filosofía: Menos es más. El contenido es el protagonista.
+ * Enfoque: Espacios generosos, tipografía clara, paleta reducida
+ */
+
+/* ========================================
+   1. COLOR PALETTE - Paleta Minimalista
+   ======================================== */
+
+/**
+ * DECISIÓN: Paleta de 2 colores + escala de grises
+ * 
+ * - AZUL PROFUNDO (#2c3e50): Color principal, transmite confianza y profesionalismo médico
+ * - VERDE MENTA (#16a085): Acento sutil para CTAs y elementos importantes (salud, bienestar)
+ * - GRISES: Escala neutra para textos y fondos, maximiza legibilidad
+ * 
+ * ELIMINADO: Gradientes, múltiples colores secundarios, acentos rojos/naranjas/púrpuras
+ */
+
+:root {
+  /* Primary Colors - Reducido a 2 colores */
+  --color-primary: #2c3e50;           /* Azul profundo - principal */
+  --color-accent: #16a085;            /* Verde menta - acento */
+  
+  /* Grayscale - Escala simplificada */
+  --color-gray-900: #1a1a1a;          /* Texto principal */
+  --color-gray-700: #4a4a4a;          /* Texto secundario */
+  --color-gray-500: #9e9e9e;          /* Texto terciario/placeholders */
+  --color-gray-300: #e0e0e0;          /* Bordes sutiles */
+  --color-gray-100: #f5f5f5;          /* Fondos alternativos */
+  --color-gray-50: #fafafa;           /* Fondo principal */
+  --color-white: #ffffff;             /* Blanco puro */
+  
+  /* Semantic Colors */
+  --color-text-primary: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-700);
+  --color-text-tertiary: var(--color-gray-500);
+  --color-background: var(--color-white);
+  --color-background-alt: var(--color-gray-50);
+  --color-border: var(--color-gray-300);
+  
+  
+  /* ========================================
+     2. TYPOGRAPHY - Tipografía Minimalista
+     ======================================== */
+  
+  /**
+   * DECISIÓN: Tipografía como protagonista
+   * 
+   * - Font family: System fonts para máxima legibilidad
+   * - Weights: Solo 400 (regular) y 600 (semibold) - eliminamos bold extremo
+   * - Line height: Generoso (1.7-1.8) para mejorar lectura
+   * - Letter spacing: Sutil apertura para claridad
+   * 
+   * ELIMINADO: Font weights 700+, line-heights apretados
+   */
+  
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-headings: var(--font-family-base);
+  
+  /* Font Weights - Reducido a 2 */
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  
+  /* Font Sizes - Escala modular (1.250 - Major Third) */
+  --font-size-xs: 0.8rem;            /* 12.8px */
+  --font-size-sm: 0.875rem;          /* 14px */
+  --font-size-base: 1rem;            /* 16px */
+  --font-size-md: 1.125rem;          /* 18px */
+  --font-size-lg: 1.25rem;           /* 20px */
+  --font-size-xl: 1.563rem;          /* 25px */
+  --font-size-2xl: 1.953rem;         /* 31.25px */
+  --font-size-3xl: 2.441rem;         /* 39px */
+  --font-size-4xl: 3.052rem;         /* 48.8px */
+  
+  /* Line Heights - Generosos para legibilidad */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.7;
+  --line-height-relaxed: 1.8;
+  
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  
+  
+  /* ========================================
+     3. SPACING - Sistema de Espaciado Generoso
+     ======================================== */
+  
+  /**
+   * DECISIÓN: Espacios en blanco como elemento de diseño
+   * 
+   * - Escala base: 8px (0.5rem)
+   * - Multiplicadores generosos: hasta 12rem (192px)
+   * - Márgenes amplios entre secciones
+   * - Padding interno holgado
+   * 
+   * FILOSOFÍA: El espacio vacío da importancia al contenido
+   */
+  
+  --space-1: 0.5rem;      /* 8px */
+  --space-2: 1rem;        /* 16px */
+  --space-3: 1.5rem;      /* 24px */
+  --space-4: 2rem;        /* 32px */
+  --space-5: 2.5rem;      /* 40px */
+  --space-6: 3rem;        /* 48px */
+  --space-8: 4rem;        /* 64px */
+  --space-10: 5rem;       /* 80px */
+  --space-12: 6rem;       /* 96px */
+  --space-16: 8rem;       /* 128px */
+  --space-20: 10rem;      /* 160px */
+  --space-24: 12rem;      /* 192px */
+  
+  /* Spacing Semantic */
+  --spacing-section: var(--space-16);      /* Entre secciones */
+  --spacing-component: var(--space-8);     /* Entre componentes */
+  --spacing-element: var(--space-4);       /* Entre elementos */
+  --spacing-inline: var(--space-2);        /* Inline elements */
+  
+  
+  /* ========================================
+     4. LAYOUT - Sistema de Grid Minimalista
+     ======================================== */
+  
+  --max-width-content: 1140px;       /* Contenedor principal */
+  --max-width-text: 720px;           /* Texto largo (lectura óptima) */
+  --max-width-narrow: 480px;         /* Contenido estrecho */
+  
+  /* Grid Gaps */
+  --gap-sm: var(--space-4);
+  --gap-md: var(--space-6);
+  --gap-lg: var(--space-8);
+  
+  
+  /* ========================================
+     5. BORDERS - Bordes Minimalistas
+     ======================================== */
+  
+  /**
+   * DECISIÓN: Bordes sutiles o inexistentes
+   * 
+   * - Grosor: 1px máximo
+   * - Color: Gris claro (#e0e0e0) casi imperceptible
+   * - Border radius: Mínimo o 0 (máximo 4px)
+   * 
+   * ELIMINADO: Bordes gruesos, border-radius grandes (>8px)
+   */
+  
+  --border-width-thin: 1px;
+  --border-width-none: 0;
+  
+  --border-radius-none: 0;
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  
+  --border-color-light: var(--color-gray-300);
+  --border-color-subtle: rgba(0, 0, 0, 0.06);
+  
+  
+  /* ========================================
+     6. SHADOWS - Sombras Minimalistas
+     ======================================== */
+  
+  /**
+   * DECISIÓN: Eliminar sombras decorativas
+   * 
+   * - Solo 1 sombra sutil para separación de capas
+   * - Opacidad muy baja (0.04-0.08)
+   * - Desenfoque mínimo
+   * 
+   * ELIMINADO: Sombras múltiples, sombras grandes, box-shadow en hover
+   */
+  
+  --shadow-none: none;
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  
+  
+  /* ========================================
+     7. TRANSITIONS - Animaciones Sutiles
+     ======================================== */
+  
+  /**
+   * DECISIÓN: Transiciones imperceptibles
+   * 
+   * - Duración: Rápida (150-200ms)
+   * - Easing: ease-out natural
+   * - Aplicar solo a color y opacity
+   * 
+   * ELIMINADO: Transforms (translateY, scale), transiciones largas (>300ms)
+   */
+  
+  --transition-fast: 150ms ease-out;
+  --transition-base: 200ms ease-out;
+  
+  --transition-color: color var(--transition-base);
+  --transition-opacity: opacity var(--transition-fast);
+  --transition-border: border-color var(--transition-base);
+  
+  
+  /* ========================================
+     8. Z-INDEX - Capas
+     ======================================== */
+  
+  --z-base: 1;
+  --z-header: 100;
+  --z-modal: 1000;
+}
+
+
+/* ========================================
+   BASE STYLES - Estilos Base Minimalistas
+   ======================================== */
+
+/**
+ * Reset minimalista - Conserva defaults del navegador cuando son buenos
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+
+/* ========================================
+   TYPOGRAPHY - Tipografía Minimalista
+   ======================================== */
+
+/**
+ * Jerarquía visual clara sin excesos
+ * Espaciado vertical generoso
+ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-5);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin-bottom: var(--space-4);
+  max-width: var(--max-width-text);
+}
+
+/* Links minimalistas */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-color);
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Listas */
+ul, ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-4);
+}
+
+li {
+  margin-bottom: var(--space-2);
+}
+
+
+/* ========================================
+   LAYOUT - Contenedores Minimalistas
+   ======================================== */
+
+.container {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.container-narrow {
+  max-width: var(--max-width-narrow);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.section {
+  padding: var(--spacing-section) 0;
+}
+
+.section-alt {
+  background-color: var(--color-background-alt);
+}
+
+
+/* ========================================
+   BUTTONS - Botones Minimalistas
+   ======================================== */
+
+/**
+ * DECISIÓN: Botones sobrios y funcionales
+ * 
+ * - Sin sombras
+ * - Sin transformaciones en hover
+ * - Bordes de 1px o fondo sólido
+ * - Padding generoso para touch targets
+ * - Tipografía clara
+ * 
+ * ELIMINADO: box-shadow, transform: translateY(), border-radius grandes
+ */
+
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-color), var(--transition-border);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Primary Button - Fondo sólido */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* Outline Button - Solo borde */
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-bottom-color: transparent;
+}
+
+/* Accent Button */
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Text Button - Minimalista extremo */
+.btn-text {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: none;
+  padding: var(--space-2) var(--space-3);
+}
+
+.btn-text:hover {
+  color: var(--color-accent);
+  background-color: var(--color-gray-50);
+}
+
+
+/* ========================================
+   CARDS - Tarjetas Minimalistas
+   ======================================== */
+
+/**
+ * DECISIÓN: Cards sin decoración excesiva
+ * 
+ * - Fondo blanco puro
+ * - Borde sutil de 1px
+ * - Sin sombra (o sombra imperceptible)
+ * - Sin hover effects exagerados
+ * 
+ * ELIMINADO: box-shadow grandes, transform: translateY(), border-radius >4px
+ */
+
+.card {
+  background-color: var(--color-white);
+  border: var(--border-width-thin) solid var(--border-color-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-6);
+  transition: var(--transition-border);
+}
+
+.card:hover {
+  border-color: var(--color-gray-500);
+}
+
+.card-flat {
+  background-color: var(--color-background-alt);
+  border: none;
+  padding: var(--space-6);
+}
+
+
+/* ========================================
+   FORMS - Formularios Minimalistas
+   ======================================== */
+
+/**
+ * DECISIÓN: Inputs limpios y funcionales
+ * 
+ * - Bordes sutiles
+ * - Padding generoso
+ * - Focus state simple (color de borde)
+ * 
+ * ELIMINADO: Sombras, efectos de focus complejos
+ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: var(--border-width-thin) solid var(--border-color-light);
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-border);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   UTILITIES - Utilidades
+   ======================================== */
+
+/* Text Alignment */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Spacing Utilities */
+.mt-0 { margin-top: 0; }
+.mt-2 { margin-top: var(--space-2); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+
+/* Display */
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+
+/* Colors */
+.color-primary { color: var(--color-primary); }
+.color-accent { color: var(--color-accent); }
+.color-muted { color: var(--color-text-tertiary); }
+
+
+/* ========================================
+   RESPONSIVE - Mobile First
+   ======================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-section: var(--space-10);
+  }
+  
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .container {
+    padding: 0 var(--space-3);
+  }
+  
+  .btn {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Focus visible para teclado */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Reducir movimiento para usuarios con preferencias */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/**
+ * ========================================
+ * RESUMEN DEL SISTEMA MINIMALISTA
+ * ========================================
+ * 
+ * PALETA DE COLORES:
+ * - Azul profundo (#2c3e50): Principal
+ * - Verde menta (#16a085): Acento
+ * - Escala de grises: 7 tonos (900-50)
+ * 
+ * TIPOGRAFÍA:
+ * - System fonts
+ * - 2 weights: 400, 600
+ * - Line-height: 1.7-1.8
+ * - Letter-spacing sutil
+ * 
+ * ESPACIADO:
+ * - Base: 8px (0.5rem)
+ * - Secciones: 8rem (128px)
+ * - Componentes: 4rem (64px)
+ * 
+ * EFECTOS ELIMINADOS:
+ * - Gradientes (linear-gradient)
+ * - Sombras grandes (box-shadow: 0 8px 24px...)
+ * - Transformaciones (translateY, scale)
+ * - Border-radius grandes (>4px)
+ * - Múltiples colores secundarios
+ * 
+ * EFECTOS CONSERVADOS (MÍNIMOS):
+ * - 1 sombra sutil (0 2px 4px rgba(0,0,0,0.06))
+ * - Transiciones de color (200ms)
+ * - Border-radius mínimo (2-4px)
+ * 
+ * FILOSOFÍA:
+ * El espacio en blanco, la tipografía clara y la paleta reducida
+ * permiten que el contenido médico sea el protagonista absoluto.
+ */
