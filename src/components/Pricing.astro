@@ -151,48 +151,46 @@
 
 <style>
   .pricing {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background-color: var(--color-white);
   }
 
   .section-header {
     text-align: center;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--space-12);
   }
 
   .section-header h2 {
-    color: var(--text-dark);
+    color: var(--color-text-primary);
   }
 
   .section-header p {
-    font-size: 1.125rem;
-    color: var(--text-light);
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
   }
 
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    gap: var(--gap-md);
+    margin-bottom: var(--space-8);
   }
 
   .pricing-card {
-    background-color: var(--bg-white);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    border: 2px solid var(--border-color);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-8);
+    border: var(--border-width-thin) solid var(--border-color-light);
+    transition: var(--transition-border);
     position: relative;
   }
 
   .pricing-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
   }
 
   .pricing-card.featured {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent);
+    border-width: 2px;
   }
 
   .popular-badge {
@@ -200,25 +198,27 @@
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--text-white);
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wide);
   }
 
   .pricing-header {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
-    padding-bottom: var(--spacing-md);
-    border-bottom: 2px solid var(--border-color);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-5);
+    border-bottom: var(--border-width-thin) solid var(--border-color-light);
   }
 
   .pricing-header h3 {
-    color: var(--text-dark);
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-4);
   }
 
   .price {
@@ -229,41 +229,42 @@
   }
 
   .currency {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
     margin-top: 0.5rem;
   }
 
   .amount {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--text-dark);
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
     line-height: 1;
   }
 
   .period {
-    font-size: 1rem;
-    color: var(--text-light);
+    font-size: var(--font-size-base);
+    color: var(--color-text-tertiary);
     align-self: flex-end;
     margin-bottom: 0.5rem;
   }
 
   .features {
     list-style: none;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--space-8);
   }
 
   .features li {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 0;
-    color: var(--text-dark);
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
   }
 
   .features li.disabled {
-    color: var(--text-light);
+    color: var(--color-text-tertiary);
     opacity: 0.5;
   }
 
@@ -273,14 +274,16 @@
 
   .pricing-note {
     text-align: center;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    padding-top: var(--spacing-md);
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+    padding-top: var(--space-5);
+    line-height: var(--line-height-relaxed);
   }
 
   @media (max-width: 768px) {
     .pricing-grid {
       grid-template-columns: 1fr;
+      gap: var(--space-8);
     }
   }
 </style>

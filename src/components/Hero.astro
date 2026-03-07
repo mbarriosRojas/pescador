@@ -30,16 +30,10 @@
         </div>
       </div>
       <div class="hero-image">
-        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#00c896;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <circle cx="250" cy="250" r="200" fill="url(#gradient1)" opacity="0.1"/>
-          <rect x="150" y="150" width="200" height="200" rx="20" fill="url(#gradient1)" opacity="0.8"/>
-          <path d="M250 180 L250 320 M180 250 L320 250" stroke="white" stroke-width="20" stroke-linecap="round"/>
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="160" fill="#f5f5f5"/>
+          <rect x="120" y="120" width="160" height="160" rx="4" fill="#2c3e50"/>
+          <path d="M200 150 L200 250 M150 200 L250 200" stroke="white" stroke-width="12" stroke-linecap="round"/>
         </svg>
       </div>
     </div>
@@ -48,8 +42,8 @@
 
 <style>
   .hero {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
-    padding: var(--spacing-xl) 0;
+    background-color: var(--color-white);
+    padding: var(--spacing-section) 0;
     min-height: calc(100vh - 80px);
     display: flex;
     align-items: center;
@@ -58,50 +52,54 @@
   .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
+    gap: var(--gap-lg);
     align-items: center;
   }
 
   .hero-text h1 {
-    color: var(--text-dark);
-    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-6);
   }
 
   .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-light);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.8;
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: var(--line-height-relaxed);
+    max-width: var(--max-width-text);
   }
 
   .hero-buttons {
     display: flex;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
+    gap: var(--space-4);
+    margin-bottom: var(--space-10);
   }
 
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-md);
-    padding-top: var(--spacing-lg);
-    border-top: 2px solid var(--border-color);
+    gap: var(--space-6);
+    padding-top: var(--space-8);
+    border-top: var(--border-width-thin) solid var(--border-color-light);
   }
 
   .stat {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: var(--space-1);
   }
 
   .stat strong {
-    font-size: 1.75rem;
-    color: var(--primary-color);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    line-height: var(--line-height-tight);
   }
 
   .stat span {
-    font-size: 0.875rem;
-    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    line-height: var(--line-height-normal);
   }
 
   .hero-image {
@@ -112,19 +110,19 @@
 
   .hero-image svg {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     height: auto;
   }
 
   @media (max-width: 768px) {
     .hero {
-      padding: var(--spacing-md) 0;
+      padding: var(--space-10) 0;
       min-height: auto;
     }
 
     .hero-content {
       grid-template-columns: 1fr;
-      gap: var(--spacing-md);
+      gap: var(--space-8);
     }
 
     .hero-image {
@@ -132,16 +130,12 @@
     }
 
     .hero-image svg {
-      max-width: 300px;
-    }
-
-    .hero-buttons {
-      flex-direction: column;
+      max-width: 280px;
     }
 
     .hero-stats {
       grid-template-columns: 1fr;
-      gap: var(--spacing-sm);
+      gap: var(--space-4);
     }
   }
 </style>
