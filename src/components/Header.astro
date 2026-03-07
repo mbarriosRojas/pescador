@@ -6,7 +6,7 @@
     <nav class="navbar">
       <div class="logo">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="8" fill="#0066cc"/>
+          <rect width="40" height="40" rx="8" fill="currentColor" class="logo-rect"/>
           <path d="M20 10L20 30M10 20L30 20" stroke="white" stroke-width="3" stroke-linecap="round"/>
         </svg>
         <span class="logo-text">Médico Online</span>
@@ -50,7 +50,11 @@
     gap: 0.75rem;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--primary-color);
+  }
+
+  .logo-rect {
+    color: var(--primary-color);
   }
 
   .logo-text {
