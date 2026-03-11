@@ -1,0 +1,127 @@
+.conductor-viajes {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.conductor-viajes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.conductor-viajes-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.conductor-viajes-error {
+  margin-bottom: 1.5rem;
+}
+
+.conductor-viajes-table-container {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.conductor-viajes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.conductor-viajes-table thead {
+  background-color: #f9fafb;
+}
+
+.conductor-viajes-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.conductor-viajes-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+  font-size: 0.875rem;
+}
+
+.conductor-viajes-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.conductor-viajes-empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 3rem !important;
+}
+
+.conductor-viajes-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.conductor-viajes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.conductor-viaje-info {
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+}
+
+.conductor-viaje-info p {
+  margin: 0;
+  color: #111827;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.estado-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.estado-iniciado {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.estado-completado {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.estado-cancelado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+@media (max-width: 768px) {
+  .conductor-viajes-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

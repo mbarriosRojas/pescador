@@ -1,0 +1,114 @@
+.viajes {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.viajes-header {
+  margin-bottom: 2rem;
+}
+
+.viajes-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.viajes-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.viajes-clear-filters {
+  padding: 0.75rem 1rem;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s ease;
+  align-self: flex-end;
+}
+
+.viajes-clear-filters:hover {
+  background-color: #4b5563;
+}
+
+.viajes-table-container {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.viajes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.viajes-table thead {
+  background-color: #f9fafb;
+}
+
+.viajes-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.viajes-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+  font-size: 0.875rem;
+}
+
+.viajes-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.viajes-empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 3rem !important;
+}
+
+.estado-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.estado-iniciado {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.estado-completado {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.estado-cancelado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+@media (max-width: 768px) {
+  .viajes-filters {
+    grid-template-columns: 1fr;
+  }
+}

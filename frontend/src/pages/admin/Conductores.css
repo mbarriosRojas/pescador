@@ -1,0 +1,134 @@
+.conductores {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.conductores-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.conductores-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.conductores-error {
+  margin-bottom: 1.5rem;
+}
+
+.conductores-table-container {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.conductores-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.conductores-table thead {
+  background-color: #f9fafb;
+}
+
+.conductores-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.conductores-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.conductores-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.conductores-empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 3rem !important;
+}
+
+.conductores-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.estado-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.estado-activo {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.estado-inactivo {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.estado-suspendido {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.conductores-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0.5rem 0;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .conductores-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
