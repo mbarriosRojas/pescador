@@ -1,470 +1,477 @@
-# Pescador - Task Management System
+# Sistema de Administración de Flota de Taxis
 
-**Pescador** is a lightweight, file-based task and user story management system integrated with GitHub Actions for automated PR generation and workflow management.
+Sistema completo de administración de flota de taxis con registro de conductores, vehículos, viajes y reportes. Desarrollado con React (frontend) y Node.js/Express (backend), utilizando MongoDB como base de datos.
 
-## 🎯 Overview
+## 📋 Tabla de Contenidos
 
-This repository contains:
-- **Task Management System**: YAML-based user stories, bugs, and tasks with automated PR generation
-- **Médico Online Landing Page**: Static Astro-based landing page for a telemedicine platform
-- **Automated Workflows**: GitHub Actions for validation, PR creation, and status synchronization
-- **Interactive Dashboard**: Static HTML dashboard for visualizing project progress
+- [Características](#características)
+- [Stack Tecnológico](#stack-tecnológico)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Instalación](#instalación)
+- [Configuración](#configuración)
+- [Ejecución](#ejecución)
+- [API Endpoints](#api-endpoints)
+- [Autenticación](#autenticación)
+- [Roles y Permisos](#roles-y-permisos)
+- [Desarrollo](#desarrollo)
+- [Producción](#producción)
 
-## 📁 Project Structure
+## ✨ Características
+
+- **Gestión de Conductores**: Registro completo con datos personales y licencias
+- **Gestión de Vehículos**: Control de flota con asignación a conductores
+- **Registro de Viajes**: Inicio y finalización de viajes con cálculo automático de ganancias
+- **Reportes y Estadísticas**: Reportes de ganancias, historial de viajes y estadísticas generales
+- **Autenticación JWT**: Sistema seguro con access tokens y refresh tokens
+- **Control de Acceso**: Roles de administrador y conductor con permisos diferenciados
+- **Interfaz Moderna**: UI responsive y moderna con React
+
+## 🛠️ Stack Tecnológico
+
+### Frontend
+- **React** ^18.2.0
+- **React Router DOM** ^6.20.0
+- **Axios** ^1.6.2
+- **React Hook Form** ^7.48.2
+- **Vite** ^5.0.8
+- **date-fns** ^2.30.0
+- **React Icons** ^4.12.0
+
+### Backend
+- **Node.js** ^18.17.0
+- **Express** ^4.18.2
+- **MongoDB** con **Mongoose** ^8.0.3
+- **JWT** (jsonwebtoken) ^9.0.2
+- **bcryptjs** ^2.4.3
+- **express-validator** ^7.0.1
+- **CORS** ^2.8.5
+- **Helmet** ^7.1.0
+- **express-rate-limit** ^7.1.5
+
+### Base de Datos
+- **MongoDB** ^7.0 (local o MongoDB Atlas)
+
+## 📁 Estructura del Proyecto
 
 ```
-pescador/
-├── .github/
-│   └── workflows/              # GitHub Actions workflows
-│       ├── validate-stories.yml    # Validate story files
-│       ├── process-tasks.yml       # Generate PRs from stories
-│       ├── sync-status.yml         # Sync story status with PRs
-│       └── generate-dashboard.yml  # Generate task dashboard
-├── tasks/
-│   ├── stories/                # User stories, bugs, and tasks (YAML)
-│   ├── epics/                  # Epic definitions
-│   ├── templates/              # Templates for new items
-│   ├── schemas/                # JSON schemas for validation
-│   └── archive/                # Completed items
-├── scripts/
-│   ├── task-manager/           # TypeScript CLI tool
-│   │   ├── src/
-│   │   │   ├── cli.ts          # Command-line interface
-│   │   │   ├── parser.ts       # YAML parser
-│   │   │   ├── validator.ts    # Story validator
-│   │   │   ├── generator.ts    # Story generator
-│   │   │   ├── github-client.ts # GitHub API client
-│   │   │   └── types.ts        # TypeScript types
-│   │   └── package.json
-│   └── utils/
-│       └── generate-dashboard.js # Dashboard generator
-├── src/                        # Astro landing page source
-│   ├── components/
-│   ├── pages/
-│   └── styles/
-├── docs/                       # Build output (GitHub Pages)
-│   ├── tasks/                  # Task dashboard
-│   │   └── index.html
-│   └── index.html              # Landing page
-└── package.json
-
+proyecto/
+├── backend/                    # Backend API
+│   ├── src/
+│   │   ├── models/            # Modelos Mongoose
+│   │   │   ├── User.js
+│   │   │   ├── Conductor.js
+│   │   │   ├── Vehiculo.js
+│   │   │   └── Viaje.js
+│   │   ├── routes/            # Rutas Express
+│   │   │   ├── auth.routes.js
+│   │   │   ├── conductor.routes.js
+│   │   │   ├── vehiculo.routes.js
+│   │   │   ├── viaje.routes.js
+│   │   │   └── reporte.routes.js
+│   │   ├── controllers/       # Controladores
+│   │   ├── services/          # Lógica de negocio
+│   │   ├── middleware/        # Middleware personalizado
+│   │   │   ├── auth.middleware.js
+│   │   │   ├── role.middleware.js
+│   │   │   ├── validation.middleware.js
+│   │   │   └── error.middleware.js
+│   │   ├── utils/             # Utilidades
+│   │   │   ├── jwt.js
+│   │   │   ├── bcrypt.js
+│   │   │   ├── validators.js
+│   │   │   └── errors.js
+│   │   ├── config/             # Configuración
+│   │   │   ├── database.js
+│   │   │   ├── env.js
+│   │   │   └── constants.js
+│   │   └── app.js              # Configuración Express
+│   ├── server.js               # Entry point
+│   ├── package.json
+│   └── .env.example
+│
+├── frontend/                    # Frontend React
+│   ├── public/
+│   ├── src/
+│   │   ├── components/         # Componentes reutilizables
+│   │   │   ├── common/        # Button, Input, Select, Modal, etc.
+│   │   │   ├── layout/        # Header, Sidebar, Footer, Layout
+│   │   │   └── forms/         # Formularios específicos
+│   │   ├── pages/             # Páginas/Vistas
+│   │   │   ├── auth/          # Login, Register
+│   │   │   ├── admin/         # Dashboard, Conductores, Vehículos, Viajes, Reportes
+│   │   │   └── conductor/     # Dashboard, Viajes
+│   │   ├── hooks/             # Custom hooks
+│   │   │   ├── useAuth.js
+│   │   │   └── useApi.js
+│   │   ├── context/           # React Context
+│   │   │   └── AuthContext.js
+│   │   ├── services/          # API services
+│   │   │   ├── api.js
+│   │   │   ├── authService.js
+│   │   │   ├── conductorService.js
+│   │   │   ├── vehiculoService.js
+│   │   │   ├── viajeService.js
+│   │   │   └── reporteService.js
+│   │   ├── utils/             # Utilidades
+│   │   │   ├── constants.js
+│   │   │   ├── validators.js
+│   │   │   └── formatters.js
+│   │   ├── styles/            # Estilos globales
+│   │   ├── App.js
+│   │   ├── index.js
+│   │   └── routes.js
+│   ├── package.json
+│   ├── vite.config.js
+│   └── .env.example
+│
+└── README.md
 ```
 
-## 🚀 Getting Started
+## 🚀 Instalación
 
-### Prerequisites
+### Prerrequisitos
 
-- Node.js 18 or higher
-- npm or pnpm
-- GitHub account (for PR generation features)
+- **Node.js** 18.17.0 o superior
+- **MongoDB** 7.0 o superior (local o MongoDB Atlas)
+- **npm** o **yarn**
 
-### Installation
+### Pasos de Instalación
 
-1. **Clone the repository**
+1. **Clonar el repositorio**
 
 ```bash
 git clone https://github.com/mbarriosRojas/pescador.git
 cd pescador
+git checkout cursor/sistema-de-gesti-n-de-taxis-cb4a
 ```
 
-2. **Install dependencies**
+2. **Instalar dependencias del backend**
 
 ```bash
-# Install root dependencies (Astro)
+cd backend
 npm install
+```
 
-# Install task manager CLI dependencies
-cd scripts/task-manager
+3. **Instalar dependencias del frontend**
+
+```bash
+cd ../frontend
 npm install
-cd ../..
-
-# Install dashboard generator dependencies
-cd scripts/utils
-npm install
-cd ../..
 ```
 
-## 📋 Task Management System
+## ⚙️ Configuración
 
-### Creating User Stories
+### Backend
 
-#### Using the CLI (Recommended)
+1. **Copiar archivo de variables de entorno**
 
 ```bash
-# Interactive creation
-npm run task:create
-
-# Create a user story
-npm run task create story
-
-# Create a bug report
-npm run task create bug
-
-# Create a task
-npm run task create task
+cd backend
+cp .env.example .env
 ```
 
-#### Manual Creation
+2. **Configurar variables de entorno** (editar `.env`)
 
-1. Copy a template from `tasks/templates/`
-2. Fill in the required fields
-3. Save to `tasks/stories/` with naming format: `US-XXX-description.yaml`
+```env
+NODE_ENV=development
+PORT=5000
 
-Example:
+# MongoDB
+# Local: mongodb://localhost:27017/taxi-admin
+# Atlas: mongodb+srv://usuario:password@cluster.mongodb.net/taxi-admin
+MONGODB_URI=mongodb://localhost:27017/taxi-admin
 
-```bash
-cp tasks/templates/user-story.yaml tasks/stories/US-002-user-authentication.yaml
-# Edit the file with your details
+# JWT Secrets (¡IMPORTANTE! Cambiar en producción)
+JWT_SECRET=tu-secret-key-super-segura-aqui-cambiar-en-produccion
+JWT_REFRESH_SECRET=tu-refresh-secret-key-aqui-cambiar-en-produccion
+
+# JWT Expiración
+JWT_EXPIRE=15m
+JWT_REFRESH_EXPIRE=7d
+
+# Bcrypt
+BCRYPT_ROUNDS=10
+
+# CORS (URL del frontend)
+CORS_ORIGIN=http://localhost:3000
 ```
 
-### Managing Stories
+### Frontend
+
+1. **Copiar archivo de variables de entorno**
 
 ```bash
-# List all stories
-npm run task:list
-
-# List by status
-npm run task list -- --status pending
-
-# List by priority
-npm run task list -- --priority high
-
-# Update story status
-npm run task update US-001 -- --status in-progress
-
-# Update assignee
-npm run task update US-001 -- --assignee username
-
-# Validate stories
-npm run task:validate
-
-# Validate specific story
-npm run task validate US-001
+cd frontend
+cp .env.example .env
 ```
 
-### Generating Pull Requests
+2. **Configurar variables de entorno** (editar `.env`)
 
-```bash
-# Generate PR for a story (requires GITHUB_TOKEN)
-npm run task pr US-001
-
-# Specify base branch
-npm run task pr US-001 -- --base develop
+```env
+VITE_API_URL=http://localhost:5000/api
+VITE_ENV=development
 ```
 
-Or use GitHub Actions:
+## ▶️ Ejecución
 
-1. Go to **Actions** tab in GitHub
-2. Select **Process Tasks and Generate PRs** workflow
-3. Click **Run workflow**
-4. Enter the story ID (e.g., US-001)
-5. The workflow will create a branch and PR automatically
+### Desarrollo
 
-## 🔄 Automated Workflows
-
-### 1. Story Validation (`validate-stories.yml`)
-
-**Triggers:**
-- On PR to `tasks/` directory
-- On push to main affecting `tasks/`
-
-**Actions:**
-- Validates YAML syntax
-- Checks required fields
-- Verifies ID uniqueness
-- Comments on PR with results
-
-### 2. PR Generation (`process-tasks.yml`)
-
-**Triggers:**
-- Manual workflow dispatch with story ID
-
-**Actions:**
-- Creates feature branch
-- Generates PR with story details
-- Adds labels and assignee
-- Updates story status
-
-### 3. Status Sync (`sync-status.yml`)
-
-**Triggers:**
-- On PR merge
-- On PR close
-- On PR reopen
-
-**Actions:**
-- Extracts story ID from PR title
-- Updates story status accordingly:
-  - Merged → `completed`
-  - Closed without merge → `cancelled`
-  - Reopened → `in-progress`
-
-### 4. Dashboard Generation (`generate-dashboard.yml`)
-
-**Triggers:**
-- On story file changes
-- Hourly schedule
-- Manual workflow dispatch
-
-**Actions:**
-- Parses all story files
-- Generates static HTML dashboard
-- Deploys to GitHub Pages
-
-## 📊 Task Dashboard
-
-View the interactive task dashboard at:
-
-**https://mbarriosrojas.github.io/pescador/tasks/**
-
-The dashboard provides:
-- Kanban board view (Backlog, In Progress, In Review, Completed)
-- Filtering by type, priority, and status
-- Search functionality
-- Real-time statistics
-- Completion rate metrics
-
-To regenerate the dashboard locally:
+**Terminal 1 - Backend:**
 
 ```bash
-node scripts/utils/generate-dashboard.js
-```
-
-## 🌐 Médico Online Landing Page
-
-The repository also contains a landing page for "Médico Online", a telemedicine platform.
-
-### Development
-
-```bash
-# Start development server
+cd backend
 npm run dev
-# Open http://localhost:4321
 ```
 
-### Build
+El servidor estará disponible en `http://localhost:5000`
+
+**Terminal 2 - Frontend:**
 
 ```bash
-# Generate static site
-npm run build
-# Output: docs/
+cd frontend
+npm run dev
 ```
 
-### Preview
+La aplicación estará disponible en `http://localhost:3000`
+
+### Producción
+
+**Backend:**
 
 ```bash
-# Preview production build
-npm run preview
+cd backend
+npm start
 ```
 
-## 📝 Story File Format
-
-### User Story
-
-```yaml
-id: US-001
-type: user-story
-title: "Feature title"
-description: |
-  As a [role]
-  I want [feature]
-  So that [benefit]
-priority: high  # low | medium | high | critical
-status: pending  # pending | in-progress | in-review | completed | cancelled
-assignee: null  # GitHub username or null
-epic: EPIC-001  # Epic ID or null
-labels: [frontend, api]
-acceptance_criteria:
-  - Criterion 1
-  - Criterion 2
-tasks:
-  - id: US-001-T1
-    title: "Task title"
-    status: pending
-    estimate: "3h"
-created_at: "2026-03-06T10:00:00Z"
-updated_at: "2026-03-06T10:00:00Z"
-```
-
-### Bug Report
-
-```yaml
-id: BUG-001
-type: bug
-title: "Bug title"
-description: |
-  Steps to reproduce, expected vs actual behavior
-severity: high
-priority: high
-status: pending
-assignee: null
-labels: [bug]
-related:
-  user_story: US-001
-  duplicate_of: null
-  blocks: []
-```
-
-### Epic
-
-```yaml
-id: EPIC-001
-title: "Epic title"
-description: "High-level description"
-status: in-progress
-goal: "Business goal"
-value: "Business value"
-start_date: "2026-03-01"
-target_date: "2026-05-31"
-owner: "team-platform"
-stories: [US-001, US-002]
-```
-
-## 🔐 GitHub Configuration
-
-### Required Secrets
-
-For PR generation to work, ensure these are configured:
-
-- `GITHUB_TOKEN`: Automatically provided by GitHub Actions
-- (Optional) `PAT_TOKEN`: Personal Access Token if you need more permissions
-
-### Permissions
-
-The GitHub Actions workflows require:
-
-- **Contents**: write (to create branches and commit)
-- **Pull requests**: write (to create PRs)
-- **Issues**: write (to add labels and comments)
-
-Configure in: **Settings > Actions > General > Workflow permissions**
-
-## 🧪 Testing
-
-### Validate All Stories
+**Frontend:**
 
 ```bash
-npm run task:validate
-```
-
-### Test Dashboard Generation
-
-```bash
-node scripts/utils/generate-dashboard.js
-open docs/tasks/index.html
-```
-
-### Test Landing Page Build
-
-```bash
+cd frontend
 npm run build
 npm run preview
 ```
 
-## 📚 Documentation
+## 📡 API Endpoints
 
-- **Task System**: See `tasks/README.md`
-- **Templates**: Available in `tasks/templates/`
-- **Schemas**: JSON schemas in `tasks/schemas/`
-- **CLI Help**: Run `npm run task -- --help`
+### Autenticación (`/api/auth`)
 
-## 🛠️ Technology Stack
+| Método | Endpoint | Descripción | Autenticación |
+|--------|----------|-------------|---------------|
+| POST | `/api/auth/register` | Registro de usuario | Opcional (primer admin) |
+| POST | `/api/auth/login` | Login | No |
+| POST | `/api/auth/refresh` | Refrescar token | No |
+| GET | `/api/auth/me` | Usuario actual | Sí |
 
-### Task Management
-- **YAML**: Story definitions
-- **TypeScript**: CLI tool and validation
-- **GitHub Actions**: Automation
-- **Octokit**: GitHub API integration
-- **Ajv**: JSON schema validation
+### Conductores (`/api/conductores`)
 
-### Landing Page
-- **Astro**: Static site generator
-- **HTML/CSS**: Semantic markup and modern styles
-- **JavaScript**: Interactive features
+| Método | Endpoint | Descripción | Autenticación | Rol |
+|--------|----------|-------------|---------------|-----|
+| GET | `/api/conductores` | Listar conductores | Sí | Admin/Conductor |
+| GET | `/api/conductores/:id` | Obtener por ID | Sí | Admin/Conductor |
+| POST | `/api/conductores` | Crear conductor | Sí | Admin |
+| PUT | `/api/conductores/:id` | Actualizar conductor | Sí | Admin/Owner |
+| DELETE | `/api/conductores/:id` | Eliminar conductor | Sí | Admin |
+| GET | `/api/conductores/:id/vehiculo` | Vehículo asignado | Sí | Admin/Conductor |
 
-### Dashboard
-- **Vanilla JS**: No framework overhead
-- **CSS Grid/Flexbox**: Responsive layout
-- **Chart.js**: (Future) Metrics visualization
+### Vehículos (`/api/vehiculos`)
 
-## 📦 NPM Scripts
+| Método | Endpoint | Descripción | Autenticación | Rol |
+|--------|----------|-------------|---------------|-----|
+| GET | `/api/vehiculos` | Listar vehículos | Sí | Admin/Conductor |
+| GET | `/api/vehiculos/disponibles` | Listar disponibles | Sí | Admin |
+| GET | `/api/vehiculos/:id` | Obtener por ID | Sí | Admin/Conductor |
+| POST | `/api/vehiculos` | Crear vehículo | Sí | Admin |
+| PUT | `/api/vehiculos/:id` | Actualizar vehículo | Sí | Admin |
+| DELETE | `/api/vehiculos/:id` | Eliminar vehículo | Sí | Admin |
+| POST | `/api/vehiculos/:id/asignar` | Asignar a conductor | Sí | Admin |
+| POST | `/api/vehiculos/:id/desasignar` | Desasignar conductor | Sí | Admin |
 
-### Root Package
+### Viajes (`/api/viajes`)
 
-```bash
-npm run dev              # Start Astro dev server
-npm run build            # Build landing page
-npm run preview          # Preview build
-npm run task             # Run task CLI (with args)
-npm run task:validate    # Validate all stories
-npm run task:create      # Create new story
-npm run task:list        # List stories
-npm run task:update      # Update story
-npm run task:pr          # Generate PR
+| Método | Endpoint | Descripción | Autenticación | Rol |
+|--------|----------|-------------|---------------|-----|
+| GET | `/api/viajes` | Listar viajes | Sí | Admin/Conductor |
+| GET | `/api/viajes/:id` | Obtener por ID | Sí | Admin/Conductor |
+| POST | `/api/viajes/iniciar` | Iniciar viaje | Sí | Conductor |
+| PUT | `/api/viajes/:id/finalizar` | Finalizar viaje | Sí | Conductor |
+| PUT | `/api/viajes/:id/cancelar` | Cancelar viaje | Sí | Conductor |
+| GET | `/api/viajes/conductor/:conductorId` | Viajes por conductor | Sí | Admin |
+
+### Reportes (`/api/reportes`)
+
+| Método | Endpoint | Descripción | Autenticación | Rol |
+|--------|----------|-------------|---------------|-----|
+| GET | `/api/reportes/ganancias` | Ganancias totales | Sí | Admin |
+| GET | `/api/reportes/viajes` | Historial de viajes | Sí | Admin |
+| GET | `/api/reportes/conductor/:conductorId` | Reporte por conductor | Sí | Admin |
+| GET | `/api/reportes/estadisticas` | Estadísticas generales | Sí | Admin |
+
+**Query Parameters para Reportes:**
+
+- `fechaInicio`: YYYY-MM-DD
+- `fechaFin`: YYYY-MM-DD
+- `conductorId`: ID del conductor
+- `estado`: Estado del viaje (solo para historial)
+
+## 🔐 Autenticación
+
+### Flujo de Autenticación
+
+1. **Login**: El usuario envía email y password
+2. **Backend valida** credenciales y genera:
+   - **Access Token** (JWT, expira en 15 minutos)
+   - **Refresh Token** (JWT, expira en 7 días)
+3. **Frontend guarda** tokens en `localStorage`
+4. **Frontend incluye** Access Token en header: `Authorization: Bearer <token>`
+5. **Si Access Token expira**, el frontend usa Refresh Token automáticamente
+6. **Si Refresh Token expira**, el usuario debe hacer login nuevamente
+
+### Uso de Tokens
+
+**En peticiones HTTP:**
+
+```javascript
+headers: {
+  'Authorization': 'Bearer <accessToken>'
+}
 ```
 
-### Task Manager
+**Refresh automático:**
 
-```bash
-cd scripts/task-manager
-npm run dev              # Run CLI in dev mode
-npm run build            # Build TypeScript
-npm run validate         # Validate stories
-npm run create           # Create story
-npm run list             # List stories
-npm run update           # Update story
-npm run pr               # Generate PR
+El frontend incluye un interceptor de Axios que:
+- Detecta errores 401 (token expirado)
+- Intenta refrescar el token automáticamente
+- Reintenta la petición original con el nuevo token
+- Redirige a login si el refresh falla
+
+## 👥 Roles y Permisos
+
+### Administrador (`admin`)
+
+- ✅ Crear, editar y eliminar conductores
+- ✅ Crear, editar y eliminar vehículos
+- ✅ Asignar/desasignar vehículos a conductores
+- ✅ Ver todos los viajes
+- ✅ Generar reportes y estadísticas
+- ✅ Crear nuevos usuarios
+
+### Conductor (`conductor`)
+
+- ✅ Ver su propio perfil
+- ✅ Editar su propio perfil
+- ✅ Ver su vehículo asignado
+- ✅ Iniciar, finalizar y cancelar viajes
+- ✅ Ver sus propios viajes
+
+## 🧪 Desarrollo
+
+### Primer Usuario (Admin)
+
+El sistema permite crear el primer usuario administrador sin autenticación previa. Después del primer usuario, solo los administradores pueden crear nuevos usuarios.
+
+### Estructura de Respuestas API
+
+**Éxito:**
+
+```json
+{
+  "success": true,
+  "data": { ... },
+  "message": "Operación exitosa" // Opcional
+}
 ```
 
-## 🤝 Contributing
+**Error:**
 
-1. Create a user story for your feature
-2. Use the task system to generate a PR
-3. Implement your changes
-4. Ensure validation passes
-5. Submit PR for review
-
-## 📄 License
-
-This project is part of an experimental repository.
-
-## 🔗 Links
-
-- **Repository**: https://github.com/mbarriosRojas/pescador
-- **Landing Page**: https://mbarriosrojas.github.io/pescador/
-- **Task Dashboard**: https://mbarriosrojas.github.io/pescador/tasks/
-
-## 💡 Tips
-
-1. **Always validate** before committing: `npm run task:validate`
-2. **Use templates** for consistency
-3. **Write clear acceptance criteria** - they become PR checklists
-4. **Link related items** using epic IDs
-5. **Keep story IDs unique** - the system checks this
-6. **Update status manually** or let workflows do it automatically
-
-## 🐛 Troubleshooting
-
-### CLI not working
-
-```bash
-cd scripts/task-manager
-npm install
+```json
+{
+  "success": false,
+  "message": "Mensaje de error"
+}
 ```
 
-### Dashboard not updating
+### Validaciones
 
-```bash
-node scripts/utils/generate-dashboard.js
+- **Backend**: express-validator para validar entrada
+- **Frontend**: react-hook-form para validación de formularios
+- **Base de datos**: Mongoose schemas con validaciones
+
+### Manejo de Errores
+
+- **400**: Bad Request (validación fallida)
+- **401**: Unauthorized (no autenticado o token inválido)
+- **403**: Forbidden (no autorizado)
+- **404**: Not Found (recurso no encontrado)
+- **409**: Conflict (recurso duplicado)
+- **500**: Internal Server Error
+
+## 🚢 Producción
+
+### Variables de Entorno de Producción
+
+**Backend:**
+
+```env
+NODE_ENV=production
+PORT=5000
+MONGODB_URI=mongodb+srv://...
+JWT_SECRET=<secret-seguro-produccion>
+JWT_REFRESH_SECRET=<refresh-secret-seguro-produccion>
+CORS_ORIGIN=https://tu-dominio.com
 ```
 
-### GitHub Actions failing
+**Frontend:**
 
-Check:
-- Workflow permissions in repository settings
-- YAML file syntax in stories
-- Required fields are present
+```env
+VITE_API_URL=https://api.tu-dominio.com/api
+VITE_ENV=production
+```
+
+### Build de Producción
+
+**Frontend:**
+
+```bash
+cd frontend
+npm run build
+```
+
+Los archivos estáticos se generan en `frontend/dist/`
+
+### Seguridad
+
+- ✅ Passwords hasheados con bcrypt
+- ✅ JWT tokens con expiración
+- ✅ Rate limiting en endpoints de autenticación
+- ✅ Helmet para seguridad HTTP headers
+- ✅ CORS configurado
+- ✅ Validación de entrada
+- ✅ Sanitización de datos
+
+## 📝 Notas Adicionales
+
+- El sistema utiliza **soft deletes** para conductores y vehículos (campo `deletedAt`)
+- Las ganancias se calculan automáticamente: `tarifaBase + (distancia * tarifaPorKm)`
+- Los viajes tienen estados: `iniciado`, `completado`, `cancelado`
+- Los vehículos tienen estados: `disponible`, `en-uso`, `mantenimiento`, `inactivo`
+
+## 🤝 Contribuir
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto es parte de un repositorio experimental.
+
+## 🔗 Enlaces
+
+- **Repositorio**: https://github.com/mbarriosRojas/pescador
+- **Rama del proyecto**: `cursor/sistema-de-gesti-n-de-taxis-cb4a`
 
 ---
 
-Built with ❤️ using Astro, TypeScript, and GitHub Actions
+Desarrollado con ❤️ usando React, Node.js, Express y MongoDB
